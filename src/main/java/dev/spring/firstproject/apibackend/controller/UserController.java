@@ -42,6 +42,7 @@ public class UserController {
     public Object getGame(){
         String authStr = "66d0c7fd878844b6b062fe3f3822a772";
         String url = "https://api.rawg.io/api/games/the-last-of-us?key="+authStr;
+        System.out.println();
 
         HttpHeaders headers = new HttpHeaders();
 
