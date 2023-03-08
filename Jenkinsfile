@@ -8,7 +8,6 @@ pipeline {
     stages {
         stage('Clean & Compile') {
             steps {
-                git branch: 'develop', url: 'https://github.com/gmarcg00/gr-backend.git'
                 sh 'mvn clean compile'
             }
         }
