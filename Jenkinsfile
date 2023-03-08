@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Package') {
             steps {
-                echo 'TO DO PACKAGE STAGE'
+                echo 'TO DO PACKAGE STAGEeeeeee'
             }
         }
 
