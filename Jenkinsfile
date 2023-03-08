@@ -6,14 +6,14 @@ pipeline {
     }
 
     stages {
-        stage('Hello') {
+        stage('Install') {
             steps {
-                echo 'Hello World'
+                git branch: 'develop', url: 'https://github.com/gmarcg00/gr-backend.git'
+                sh 'mvn clean install -Dmaven.test.skip=true'
             }
         }
         stage('Compile') {
             steps {
-                git branch: 'develop', url: 'https://github.com/gmarcg00/gr-backend.git'
                 sh 'mvn clean compile'
             }
         }
