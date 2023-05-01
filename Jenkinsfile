@@ -15,9 +15,13 @@ pipeline {
             }
         }
         stage('SonarQube Analysis') {
-            def mvn = tool 'maven';
-            withSonarQubeEnv() {
-              sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=gr-backend"
+            steps{
+                script{
+                    def mvn = tool 'maven';
+                    withSonarQubeEnv() {
+                      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=gr-backend"
+                    }
+                }
             }
         }
     }
