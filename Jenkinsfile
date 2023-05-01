@@ -20,7 +20,7 @@ pipeline {
                     def sonarqubeScannerHome = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
                     def mvn = tool 'maven';
                     withCredentials([string(credentialsId: 'sonar', variable: 'sonarLogin')]) {
-                      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=gr-backend -e -Dsonar.host.url=http://172.27.0.4:9000/ -Dsonar.login=${sonarLogin}"
+                      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=gr-backend -e -Dsonar.host.url=http://172.20.0.10:9000/ -Dsonar.login=${sonarLogin}"
                     }
                 }
             }
