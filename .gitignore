@@ -1,5 +1,5 @@
 HELP.md
-.gradle
+.mvn/wrapper/maven-wrapper.jar
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
