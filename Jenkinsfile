@@ -17,8 +17,9 @@ pipeline {
         stage('SonarQube Analysis') {
             steps{
                 script{
+                    def sonarqubeScannerHome = tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
                     def mvn = tool 'maven';
-                    withSonarQubeEnv() {
+                    withCredentials([string(credentialsId: 'sonar', variable: 'sonarLogin')]) {
                       sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=gr-backend"
                     }
                 }
