@@ -9,7 +9,7 @@ pipeline {
                 sh 'mvn clean compile'
             }
         }
-        stage('Init') {
+        stage('Unit Test') {
             steps {
                 sh 'mvn test'
             }
