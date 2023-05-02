@@ -28,6 +28,13 @@ pipeline {
         stage('Package'){
             steps{
                 sh 'mvn package'
+                //sh 'java -jar target/grbackend-0.0.1-SNAPSHOT.jar'
+            }
+        }
+        stage('API Test'){
+            steps{
+                echo 'TODO'
+                //sh 'mvn test -Dtest=KarateRunner'
             }
         }
     }
