@@ -1,14 +1,20 @@
 [
   {
   "id": 1,
-  "email": "edu@edu.com",
-  "userName": "edu92",
-  "password": "edu1234"
+  "email": "user1@gmail.com",
+  "userName": "user1",
+  "password": "user1-1234"
   },
   {
-  "id": 2,
-  "email": "guille@edu.com",
-  "userName": "g92",
-  "password": "g1234"
+    "id": 2,
+    "email": "user2@hotmail.com",
+    "userName": "user2",
+    "password": "user2-1234"
+  },
+  {
+    "id": 3,
+    "email": "user3@live.com",
+    "userName": "user3",
+    "password": "user3-1234"
   }
 ]

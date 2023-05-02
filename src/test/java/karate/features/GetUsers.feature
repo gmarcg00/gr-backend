@@ -1,4 +1,4 @@
-Feature: RETURN USERS test
+Feature:  Users testsuit
 
   Background:
     * url 'http://' + apphost + ':8081'
