@@ -10,4 +10,7 @@ public class KarateRunner {
 
     @Karate.Test
     Karate testGetUsers() { return Karate.run("classpath:features/GetUsers.feature"); }
-    }
+
+    @Karate.Test
+    Karate testGetGames() { return Karate.run("classpath:features/TestGames.feature"); }
+}

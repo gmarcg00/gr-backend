@@ -32,8 +32,7 @@ public class UserController {
         return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
     }
     @PostMapping()
-    public User saveUser(@RequestBody User user){
-        return this.userService.saveUser(user);
+    public User saveUser(@RequestBody User user) { return this.userService.saveUser(user);
     }
 
     @DeleteMapping(path = "/{userName}")
