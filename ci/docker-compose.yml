@@ -1,36 +1,12 @@
 version: '3'
 
 services:
-  jenkins:
-    container_name: jenkinsJDK17
-    image: jenkins/jenkins:2.387.2-lts-jdk17
-    volumes:
-      - ./jenkins_home:/var/jenkins_home
-    ports:
-      - "8080:8080"
-    networks:
-      - net
-  postgres:
-    image: postgres:14
-    networks:
-      - net
+  mysql:
+    container_name: mysql
+    image: gr-db
     environment:
-      POSTGRES_USER: sonar
-      POSTGRES_PASSWORD: sonarpasswd
-    volumes:
-      - ./postgres_data:/var/lib/postgresql/data
-  sonarqube:
-    image: sonarqube:lts
+      MYSQL_DATABASE: gr-db
+      MYSQL_ROOT_PASSWORD: root-1234
     ports:
-      - "9000:9000"
-      - "9092:9092"
-    networks:
-      - net
-    environment:
-      SONARQUBE_JDBC_USERNAME: sonar
-      SONARQUBE_JDBC_PASSWORD: sonarpasswd
-      SONARQUBE_JDBC_URL: "jdbc:postgresql://postgres:5432/sonar"
-    depends_on:
-      - postgres
-networks:
-  net:
+      - "3306:3306"
+      - "8084:3306"
