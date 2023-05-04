@@ -28,7 +28,7 @@ Feature:  Users testsuit
     Given path '/user/register'
     And request createUserRequest
     When method POST
-    Then status 200
+    Then status 201
     And match response == createUserResponse
 
  Scenario: testing delete user
