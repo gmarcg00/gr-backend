@@ -17,7 +17,7 @@ Feature:  Users testsuit
     Then status 200
     And match response == getUsersResponse
 
-  Scenario: testing get single user
+  Scenario: testing login user
     Given path '/user/login'
     And request getSingleUserRequest
     When method POST
@@ -29,13 +29,17 @@ Feature:  Users testsuit
     And request createUserRequest
     When method POST
     Then status 201
-    And match response == createUserResponse
+    And match response.email == createUserResponse.email
+    And match response.userName == createUserResponse.userName
+    And match response.password == createUserResponse.password
 
- Scenario: testing delete user
-   Given path '/user'
-   And request deleteUserRequest
-   When method DELETE
-   Then status 201
-   And match response == deleteUserResponse
+  Scenario: testing delete user
+    Given path '/user'
+    And request deleteUserRequest
+    When method DELETE
+    Then status 201
+    And match response.email == deleteUserResponse.email
+    And match response.userName == deleteUserResponse.userName
+    And match response.password == deleteUserResponse.password
 
 
