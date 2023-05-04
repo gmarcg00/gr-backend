@@ -31,13 +31,22 @@ public class UserController {
         }
         return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
     }
-    @PostMapping()
-    public User saveUser(@RequestBody User user){
-        return this.userService.saveUser(user);
+    @PostMapping("/register")
+    public ResponseEntity<User> saveUser(@RequestBody User user) {
+        User userObject = this.userService.saveUser(user);
+        if(userObject != null){
+            return new ResponseEntity<>(userObject, HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>(null, HttpStatus.CONFLICT);
     }
 
-    @DeleteMapping(path = "/{userName}")
-    public User deleteUser(@PathVariable("userName") String userName){
-        return userService.deleteUser(userName);
+    @DeleteMapping()
+    public ResponseEntity<Object> deleteUser(@RequestBody User user){
+        User userObject = userService.deleteUser(user);
+        if(userObject != null){
+            return new ResponseEntity<>(userObject, HttpStatus.CREATED);
+        }else{
+            return new ResponseEntity<>("Usuario no encontrado.", HttpStatus.NOT_FOUND);
+        }
     }
 }

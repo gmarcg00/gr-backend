@@ -3,15 +3,16 @@ pipeline {
 
     tools {maven "maven"}
 
-    stages {
-        stage('Compile') {
+    stages{
+        stage('Clean & Compile') {
             steps {
                 sh 'mvn clean compile'
             }
         }
         stage('Unit Test') {
             steps {
-                sh 'mvn test'
+                sh 'mvn test -Dtest=UserControllerTest'
+                sh 'mvn test -Dtest=UserServiceTest'
             }
         }
         stage('SonarQube Analysis') {
@@ -25,9 +26,20 @@ pipeline {
                 }
             }
         }
+        stage('Acceptance Test'){
+            steps{
+                sh 'mvn test -Dtest=RunCucumberTest'
+            }
+        }
         stage('Package'){
             steps{
                 sh 'mvn package'
+            }
+        }
+        stage('API Test'){
+            steps{
+                sh 'java -jar target/grbackend-0.0.1-SNAPSHOT.jar &'
+                sh 'mvn test -Dtest=KarateRunner'
             }
         }
     }

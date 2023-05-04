@@ -24,11 +24,12 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public User deleteUser(String userName){
-        try{
-            return userRepository.deleteByUserName(userName);
-        }catch (Exception err){
-            return null;
+    public User deleteUser(User user){
+        User isUser = getByUserName(user);
+        if(isUser != null){
+            userRepository.deleteById(isUser.getId());
+            return isUser;
         }
+        return null;
     }
 }
