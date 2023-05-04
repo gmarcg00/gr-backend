@@ -6,9 +6,11 @@ pipeline {
     stages{
         stage ("Build Docker DB"){
             steps{
-                sh 'docker build -t gr-db .'
-                sh 'cd ci'
-                sh 'docker-compose up -d'
+                script{
+                    sh 'docker build -t gr-db .'
+                    sh 'cd ci'
+                    sh 'docker-compose up -d'
+                }
             }
         }
 
