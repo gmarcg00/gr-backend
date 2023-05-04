@@ -7,7 +7,7 @@ public class KarateRunner {
     Karate testActuatorHealth() {return Karate.run("src/test/java/karate/features/ActuatorHealth.feature");}
 
     @Karate.Test
-    Karate testGetUsers() { return Karate.run("src/test/java/karate/features/GetUsers.feature"); }
+    Karate testGetUsers() { return Karate.run("src/test/java/karate/features/TestUsers.feature"); }
 
     @Karate.Test
     Karate testGetGames() { return Karate.run("src/test/java/karate/features/TestGames.feature"); }

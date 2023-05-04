@@ -11,9 +11,6 @@ import org.springframework.web.client.RestTemplate;
 public class GameService {
     @Autowired
     GameRepository gameRepository;
-    @Autowired
-    private RestTemplate restTemplate;
-
     public ResponseEntity<Iterable<Game>> getGames(){
         return new ResponseEntity<>(gameRepository.findAll(), HttpStatus.OK);
         /*
