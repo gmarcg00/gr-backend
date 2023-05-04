@@ -4,14 +4,15 @@ pipeline {
     tools {maven "maven"}
 
     stages {
-        stage('Compile') {
+        stage('Clean & Compile') {
             steps {
                 sh 'mvn clean compile'
             }
         }
         stage('Unit Test') {
             steps {
-                sh 'mvn test'
+                sh 'mvn test -Dtest=UserControllerTest'
+                sh 'mvn test -Dtest=UserServiceTest'
             }
         }
         stage('SonarQube Analysis') {
@@ -23,6 +24,11 @@ pipeline {
                       sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=gr-backend -e -Dsonar.host.url=http://172.20.0.10:9000/ -Dsonar.login=${sonarLogin}"
                     }
                 }
+            }
+        }
+        stage('Acceptance Test'){
+            steps{
+                sh 'mvn test -Dtest=RunCucumberTest'
             }
         }
         stage('Package'){

@@ -1,10 +1,10 @@
 Feature:  Games testsuit
 
   Background:
-    * url 'http://' + apphost + ':8081'
+    * url 'http://localhost:8081'
     * header Accept = 'application/json'
-    * def getGamesResponse = read ('classpath:/jsons/Mappings/jsonGetGamesResponse.json')
-    * def createGameRequest = read ('classpath:/jsons/Mappings/jsonCreateGameRequest.json')
+    * def getGamesResponse = read ('../jsons/Mappings/jsonGetGamesResponse.json')
+    * def createGameRequest = read ('../jsons/Mappings/jsonCreateGameRequest.json')
 
   Scenario: testing get all games
     Given path '/game'

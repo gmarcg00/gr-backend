@@ -1,11 +1,11 @@
 Feature:  Users testsuit
 
   Background:
-    * url 'http://' + apphost + ':8081'
+    * url 'http://localhost:8081'
     * header Accept = 'application/json'
-    * def getUsersResponse = read ('classpath:/jsons/Mappings/jsonGetUsersResponse.json')
-    * def getSingleUserRequest = read ('classpath:/jsons/Mappings/jsonGetSingleUserRequest.json')
-    * def getSingleUserResponse = read ('classpath:/jsons/Mappings/jsonGetSingleUserResponse.json')
+    * def getUsersResponse = read ('../jsons/Mappings/jsonGetUsersResponse.json')
+    * def getSingleUserRequest = read ('../jsons/Mappings/jsonGetSingleUserRequest.json')
+    * def getSingleUserResponse = read ('../jsons/Mappings/jsonGetSingleUserResponse.json')
 
   Scenario: testing get all users
     Given path '/user'
