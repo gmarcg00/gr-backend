@@ -8,7 +8,6 @@ Feature:  Users testsuit
     * def getSingleUserResponse = read ('../jsons/Mappings/jsonGetSingleUserResponse.json')
     * def createUserRequest = read ('../jsons/Mappings/jsonCreateUserRequest.json')
     * def createUserResponse = read ('../jsons/Mappings/jsonCreateUserResponse.json')
-    * def getUsersResponseAfterPost = read ('../jsons/Mappings/jsonGetUsersResponseAfterPost.json')
     * def deleteUserRequest = read ('../jsons/Mappings/jsonDeleteUserRequest.json')
     * def deleteUserResponse = read ('../jsons/Mappings/jsonDeleteUserResponse.json')
 
