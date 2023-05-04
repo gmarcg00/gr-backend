@@ -3,6 +3,7 @@ pipeline {
 
     tools {maven "maven"}
 
+    stages{
         stage ("Build Docker DB"){
             steps{
                 sh 'docker build -t gr-db'
