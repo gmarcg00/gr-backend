@@ -1,21 +1,9 @@
 pipeline {
-    agent {
-        docker {image 'node:16-alpine'}
-    }
+    agent any
 
     tools {maven "maven"}
 
     stages{
-        stage ("Build Docker DB"){
-            steps{
-                script{
-                    sh 'docker build -t gr-db .'
-                    sh 'cd ci'
-                    sh 'docker-compose up -d'
-                }
-            }
-        }
-
         stage('Clean & Compile') {
             steps {
                 sh 'mvn clean compile'

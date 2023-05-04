@@ -32,7 +32,12 @@ public class UserController {
         return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
     }
     @PostMapping("/register")
-    public User saveUser(@RequestBody User user) { return this.userService.saveUser(user);
+    public ResponseEntity<User> saveUser(@RequestBody User user) {
+        User userObject = this.userService.saveUser(user);
+        if(userObject != null){
+            return new ResponseEntity<>(userObject, HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>(null, HttpStatus.CONFLICT);
     }
 
     @DeleteMapping()
