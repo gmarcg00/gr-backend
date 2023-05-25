@@ -1,6 +1,10 @@
 Feature: Games section
 
-  Scenario: Display games on games section
+  Scenario Outline: Display games on games section
     Given a game review user
     When making click on games section
-    Then all games info will be displayed
+    Then info from game "<game>" will be displayed
+
+    Examples:
+      | game           |
+      | The Last Of Us |

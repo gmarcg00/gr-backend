@@ -59,8 +59,15 @@ class UserServiceTest {
         Assertions.assertEquals(expectedUser.getEmail(),actualUser.getEmail());
         Assertions.assertEquals(expectedUser.getPassword(),actualUser.getPassword());
     }
-
+/*
     @Test
     void deleteUser() {
+        User expectedUser = userService.getByUserName(new User ("user3@live.com","user3","user3-1234"));
+        Mockito.when(userService.deleteUser(expectedUser)).thenReturn(new User ("user3@live.com","user3","user3-1234"));
+        User actualUser = userService.deleteUser(expectedUser);
+        Assertions.assertEquals(expectedUser.getUserName(),actualUser.getUserName());
+        Assertions.assertEquals(expectedUser.getEmail(),actualUser.getEmail());
+        Assertions.assertEquals(expectedUser.getPassword(),actualUser.getPassword());
     }
+ */
 }

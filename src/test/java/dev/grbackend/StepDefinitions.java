@@ -23,9 +23,10 @@ public class StepDefinitions {
         listGames = gameService.getGames();
     }
 
-    @Then("all games info will be displayed")
-    public void allGamesInfoWillBeDisplayed() {
+    @Then("info from game {string} will be displayed")
+    public void infoFromGameWillBeDisplayed(String game) {
         Assertions.assertEquals(1,listGames.size());
+        Assertions.assertEquals(game,listGames.get(0).getName());
     }
 
 }
