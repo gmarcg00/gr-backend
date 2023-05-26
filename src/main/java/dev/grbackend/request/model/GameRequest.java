@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
-public class GamesRequest {
+public class GameRequest {
     RestTemplate restTemplate = new RestTemplate();
     HttpHeaders headers = new HttpHeaders();
     HttpEntity<Game> httpEntity = new HttpEntity<Game>(headers);
@@ -23,16 +23,16 @@ public class GamesRequest {
     @Value("${rawg.api-key}") private String apiKey;
     @Value("${games.endpoint}") private String endpoint;
     @Value("${pageNumber.queryParam}") private String queryParam;
-    private final Integer numGamePages = 10;
+    private final Integer numGamePages = 5;
 
-    public List<Game> getGames(){
+    public List<Game> getData(){
         List<Game> result = new ArrayList<>();
         GamesResponse games = null;
 
         ResponseEntity<GamesResponse> getGamesResponse = null;
         for(Integer i = 1; i <= numGamePages; i++ ){
             getGamesResponse = doRequest(i);
-            games =getGamesResponse.getBody();
+            games = getGamesResponse.getBody();
             result.addAll(Objects.requireNonNull(games).getResults());
         }
         return result;
