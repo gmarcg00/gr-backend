@@ -17,15 +17,15 @@ public class GameService {
     @Autowired
     GameMemory gameMemory;
 
-    public ArrayList<Game> filterGames(){
-        return (ArrayList<Game>) gameRepository.findAll();
+    public List<Game> getGames(){
+        return gameMemory.getList();
     }
 
     public Game saveGame(Game game){
         return gameRepository.save(game);
     }
 
-    public List<Game> filterGames(String genre, String platform, String store){
+    public List<Game> findGames(String genre, String platform, String store){
         List<Game> result = new ArrayList<>();
 
         if(!genre.equals("null")) result = gameMemory.findByGenre(genre);

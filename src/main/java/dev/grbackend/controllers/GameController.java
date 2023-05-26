@@ -17,8 +17,8 @@ public class GameController {
     @Autowired
     private GameService gameService;
     @GetMapping
-    public ResponseEntity<ArrayList<Game>> getGames(){
-        ArrayList<Game> listGames = gameService.filterGames();
+    public ResponseEntity<List<Game>> getGames(){
+        List<Game> listGames = gameService.getGames();
         if(listGames != null){
             return new ResponseEntity<>(listGames, HttpStatus.OK);
         }
@@ -26,7 +26,7 @@ public class GameController {
     }
     @GetMapping("/genre/{genre}/platform/{plat}/store/{store}")
     public ResponseEntity<List<Game>> getGamesByGenre(@PathVariable("genre") String genre, @PathVariable("plat") String platform, @PathVariable("store") String store){
-        List<Game> listGames = gameService.filterGames(genre,platform,store);
+        List<Game> listGames = gameService.findGames(genre,platform,store);
         if(listGames != null){
             return new ResponseEntity<>(listGames, HttpStatus.OK);
         }
