@@ -21,6 +21,12 @@ public class GameMemory {
 
     public Integer count(){return this.list.size();}
 
+    public List<Game> findByName(String gameName){
+        return list.stream()
+                .filter(x -> x.getSlug().equals(gameName))
+                .collect(Collectors.toList());
+    }
+
     public List<Game> findByGenre(String genre){
         return list.stream()
                 .filter(x -> x.containsGenre(genre))

@@ -21,7 +21,7 @@ public class StepDefinitions {
 
     @When("making click on games section")
     public void makingClickOnGamesSection() {
-        listGames = gameService.getGames();
+        listGames = gameService.getAllGames();
     }
 
     @Then("info from game {string} will be displayed")

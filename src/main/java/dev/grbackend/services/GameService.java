@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GameService {
@@ -17,8 +18,16 @@ public class GameService {
     @Autowired
     GameMemory gameMemory;
 
-    public List<Game> getGames(){
+    public List<Game> getAllGames(){
         return gameMemory.getList();
+    }
+
+    public Game getGame(String gameName){
+        List<Game> list = gameMemory.findByName(gameName);
+
+        if(list.size() == 1) return list.get(0);
+
+        return null;
     }
 
     public Game saveGame(Game game){

@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -17,10 +16,19 @@ public class GameController {
     @Autowired
     private GameService gameService;
     @GetMapping
-    public ResponseEntity<List<Game>> getGames(){
-        List<Game> listGames = gameService.getGames();
+    public ResponseEntity<List<Game>> getAllGames(){
+        List<Game> listGames = gameService.getAllGames();
         if(listGames != null){
             return new ResponseEntity<>(listGames, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping("{slug}")
+    public ResponseEntity<Game> getGame(@PathVariable("slug") String gameName){
+        Game game = gameService.getGame(gameName);
+        if(game != null){
+            return new ResponseEntity<>(game, HttpStatus.OK);
         }
         return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
     }
@@ -31,10 +39,6 @@ public class GameController {
             return new ResponseEntity<>(listGames, HttpStatus.OK);
         }
         return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
-    }
-    @RequestMapping(params = {"slug"})
-    public ResponseEntity<Game> getGame (@RequestParam String slug){
-        return null;
     }
     @PostMapping()
     public Game saveGame(@RequestBody Game game){
