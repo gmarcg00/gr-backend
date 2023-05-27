@@ -40,6 +40,14 @@ public class GameController {
         }
         return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
     }
+    @GetMapping("/search/{prefix}")
+    public ResponseEntity<List<Game>> searchByPrefix(@PathVariable("prefix") String prefix){
+        List<Game> listGames = gameService.searchByPrefix(prefix);
+        if(listGames != null){
+            return new ResponseEntity<>(listGames, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+    }
     @PostMapping()
     public Game saveGame(@RequestBody Game game){
         return this.gameService.saveGame(game);

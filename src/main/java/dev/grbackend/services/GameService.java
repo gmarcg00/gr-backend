@@ -9,7 +9,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
+import static dev.grbackend.utils.Helper.getRegexFromPrefix;
 
 @Service
 public class GameService {
@@ -43,4 +44,13 @@ public class GameService {
 
         return result;
     }
+
+    public List<Game> searchByPrefix (String prefix){
+        List<Game> result = gameMemory.searchByPrefix(getRegexFromPrefix(prefix));
+
+        if (result.size() >= 6) return result.subList(0,5);
+        else return result;
+    }
+
+
 }

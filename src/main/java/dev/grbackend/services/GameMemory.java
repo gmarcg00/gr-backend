@@ -42,4 +42,9 @@ public class GameMemory {
                 .filter(x -> x.containsStore(store))
                 .collect(Collectors.toList());
     }
+    public List<Game> searchByPrefix(String regex){
+        return list.stream()
+                .filter(x -> x.getName().matches(regex))
+                .collect(Collectors.toList());
+    }
 }
