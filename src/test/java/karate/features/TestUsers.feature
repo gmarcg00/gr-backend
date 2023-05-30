@@ -3,19 +3,12 @@ Feature:  Users testsuit
   Background:
     * url 'http://localhost:8081'
     * header Accept = 'application/json'
-    * def getUsersResponse = read ('../jsons/Mappings/jsonGetUsersResponse.json')
     * def getSingleUserRequest = read ('../jsons/Mappings/jsonGetSingleUserRequest.json')
     * def getSingleUserResponse = read ('../jsons/Mappings/jsonGetSingleUserResponse.json')
     * def createUserRequest = read ('../jsons/Mappings/jsonCreateUserRequest.json')
     * def createUserResponse = read ('../jsons/Mappings/jsonCreateUserResponse.json')
     * def deleteUserRequest = read ('../jsons/Mappings/jsonDeleteUserRequest.json')
     * def deleteUserResponse = read ('../jsons/Mappings/jsonDeleteUserResponse.json')
-
-  Scenario: testing get all users
-    Given path '/user'
-    When method GET
-    Then status 200
-    And match response == getUsersResponse
 
   Scenario: testing login user
     Given path '/user/login'

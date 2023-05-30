@@ -6,5 +6,5 @@ Feature: Games section
     Then info from game "<game>" will be displayed
 
     Examples:
-      | game           |
-      | The Last Of Us |
+      | game               |
+      | Grand Theft Auto V |

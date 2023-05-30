@@ -40,6 +40,12 @@ public class UserController {
         return new ResponseEntity<>(null, HttpStatus.CONFLICT);
     }
 
+    @PostMapping("/like")
+    public boolean likeGame(@RequestBody Object likeRequest){
+        return true;
+    }
+
+
     @DeleteMapping()
     public ResponseEntity<Object> deleteUser(@RequestBody User user){
         User userObject = userService.deleteUser(user);

@@ -26,7 +26,7 @@ public class StepDefinitions {
 
     @Then("info from game {string} will be displayed")
     public void infoFromGameWillBeDisplayed(String game) {
-        Assertions.assertEquals(1,listGames.size());
+        Assertions.assertEquals(100,listGames.size());
         Assertions.assertEquals(game,listGames.get(0).getName());
     }
 

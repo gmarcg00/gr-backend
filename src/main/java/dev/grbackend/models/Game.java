@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Entity
-@Table(name = "game")
 public class Game {
     @Id
     @Column(unique = true, nullable = false)

@@ -48,8 +48,5 @@ public class GameController {
         }
         return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
     }
-    @PostMapping()
-    public Game saveGame(@RequestBody Game game){
-        return this.gameService.saveGame(game);
-    }
+
 }
