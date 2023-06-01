@@ -29,13 +29,14 @@ public class GameService {
     }
 
     public List<Game> findGames(String genre, String platform, String store){
-        List<Game> result = new ArrayList<>();
+        GameMemory resultFilter = new GameMemory();
+        resultFilter.setList(gameMemory.getList());
 
-        if(!genre.equals("null")) result = gameMemory.findByGenre(genre);
-        if(!platform.equals("null")) result = gameMemory.findByPlatform(platform);
-        if(!store.equals("null")) result = gameMemory.findByStore(store);
+        if(!genre.equals("null")) resultFilter.setList(resultFilter.findByGenre(genre));
+        if(!platform.equals("null")) resultFilter.setList(resultFilter.findByPlatform(platform));
+        if(!store.equals("null")) resultFilter.setList(resultFilter.findByStore(store));
 
-        return result;
+        return resultFilter.getList();
     }
 
     public List<Game> searchByPrefix (String prefix){
