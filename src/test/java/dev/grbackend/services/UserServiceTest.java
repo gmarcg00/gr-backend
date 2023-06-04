@@ -44,7 +44,7 @@ class UserServiceTest {
     void getByUserName() {
         User expectedUser = new User ("guillermo.1930@live.com","guille02","g1234");
         Mockito.when(userRepository.findByUserName(expectedUser.getUserName())).thenReturn(new User ("guillermo.1930@live.com","guille02","g1234"));
-        User actualUser = userService.getByUserName(expectedUser);
+        User actualUser = userService.loginUser(expectedUser);
         Assertions.assertEquals(expectedUser.getUserName(),actualUser.getUserName());
         Assertions.assertEquals(expectedUser.getEmail(),actualUser.getEmail());
         Assertions.assertEquals(expectedUser.getPassword(),actualUser.getPassword());

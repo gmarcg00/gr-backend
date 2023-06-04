@@ -16,37 +16,36 @@ public class GameController {
     @Autowired
     private GameService gameService;
     @GetMapping
-    public ResponseEntity<List<Game>> getAllGames(){
+    public ResponseEntity<List<Game>> getAllGames (){
         List<Game> listGames = gameService.getAllGames();
         if(listGames != null){
             return new ResponseEntity<>(listGames, HttpStatus.OK);
         }
-        return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("{slug}")
-    public ResponseEntity<Game> getGame(@PathVariable("slug") String gameName){
+    public ResponseEntity<Game> getGame (@PathVariable("slug") String gameName){
         Game game = gameService.getGame(gameName);
         if(game != null){
             return new ResponseEntity<>(game, HttpStatus.OK);
         }
-        return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
     @GetMapping("/genre/{genre}/platform/{plat}/store/{store}")
-    public ResponseEntity<List<Game>> getGamesByGenre(@PathVariable("genre") String genre, @PathVariable("plat") String platform, @PathVariable("store") String store){
+    public ResponseEntity<List<Game>> getGamesByGenre (@PathVariable("genre") String genre, @PathVariable("plat") String platform, @PathVariable("store") String store){
         List<Game> listGames = gameService.findGames(genre,platform,store);
-        if(listGames != null){
+        if(!listGames.isEmpty()){
             return new ResponseEntity<>(listGames, HttpStatus.OK);
         }
-        return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(listGames,HttpStatus.NOT_FOUND);
     }
     @GetMapping("/search/{prefix}")
-    public ResponseEntity<List<Game>> searchByPrefix(@PathVariable("prefix") String prefix){
+    public ResponseEntity<List<Game>> searchByPrefix (@PathVariable("prefix") String prefix) {
         List<Game> listGames = gameService.searchByPrefix(prefix);
-        if(listGames != null){
+        if (!listGames.isEmpty()) {
             return new ResponseEntity<>(listGames, HttpStatus.OK);
         }
-        return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(listGames, HttpStatus.NOT_FOUND);
     }
-
 }
