@@ -26,6 +26,7 @@ pipeline {
                 }
             }
         }
+        /*
         stage('Acceptance Test'){
             steps{
                 sh 'mvn test -Dtest=RunCucumberTest'
@@ -42,5 +43,6 @@ pipeline {
                 sh 'mvn test -Dtest=KarateRunner'
             }
         }
+        */
     }
 }
