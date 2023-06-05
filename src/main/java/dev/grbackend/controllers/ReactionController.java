@@ -1,5 +1,6 @@
 package dev.grbackend.controllers;
 
+import dev.grbackend.models.Game;
 import dev.grbackend.models.Reaction;
 import dev.grbackend.services.ReactionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,15 +32,6 @@ public class ReactionController {
             return new ResponseEntity<>(reaction, HttpStatus.OK);
         }else{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-    @GetMapping("like/user/{userName}")
-    public ResponseEntity<List<Reaction>> getUserLikeReactions (@PathVariable("userName") String userName){
-        List<Reaction> reactionList = reactionService.getUserLikeReactions(userName);
-        if(reactionList != null){
-            return new ResponseEntity<>(reactionList, HttpStatus.OK);
-        }else{
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
     }
 

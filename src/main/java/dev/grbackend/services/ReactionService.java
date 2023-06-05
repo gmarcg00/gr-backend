@@ -1,5 +1,6 @@
 package dev.grbackend.services;
 
+
 import dev.grbackend.models.Reaction;
 import dev.grbackend.repositories.ReactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +25,6 @@ public class ReactionService {
                 .collect(Collectors.toList());
         if(userReactions.isEmpty()) return null;
         else return userReactions.get(0);
-    }
-
-    public List<Reaction> getUserLikeReactions (String userName){
-        List<Reaction> reactionList = reactionRepository.findByUserName(userName);
-        return reactionList.stream()
-                .filter(x -> x.getReactionType().equals("Like"))
-                .collect(Collectors.toList());
     }
 
     public List<Reaction> getGameLikeReactions (String slug){

@@ -32,6 +32,7 @@ public class GameController {
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
     @GetMapping("/genre/{genre}/platform/{plat}/store/{store}")
     public ResponseEntity<List<Game>> getGamesByGenre (@PathVariable("genre") String genre, @PathVariable("plat") String platform, @PathVariable("store") String store){
         List<Game> listGames = gameService.findGames(genre,platform,store);
@@ -43,9 +44,12 @@ public class GameController {
     @GetMapping("/search/{prefix}")
     public ResponseEntity<List<Game>> searchByPrefix (@PathVariable("prefix") String prefix) {
         List<Game> listGames = gameService.searchByPrefix(prefix);
-        if (!listGames.isEmpty()) {
-            return new ResponseEntity<>(listGames, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(listGames, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(listGames, HttpStatus.OK);
+    }
+
+    @GetMapping("like/user/{userName}")
+    public ResponseEntity<List<Game>> getUserLikedGames(@PathVariable("userName") String userName){
+        List<Game> likeGameList = gameService.getUserLikedGames(userName);
+        return new ResponseEntity<>(likeGameList, HttpStatus.OK);
     }
 }

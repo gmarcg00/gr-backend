@@ -1,5 +1,6 @@
 package dev.grbackend.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -12,13 +13,15 @@ public class Review {
     @Column(unique = true, nullable = false)
     private Long id;
     @Column(unique = true)
+    @JsonProperty(value = "slug")
     private String game;
     @Column(unique = true)
     private String userName;
+    @Column(length = 30)
+    private String title;
     @Column(length = 2500)
     private String content;
     private Date date;
-
     public Date getDate() {
         return date;
     }
@@ -52,6 +55,9 @@ public class Review {
 
     public String getContent() {
         return content;
+    }
+    public String getTitle() {
+        return title;
     }
 
     public void setContent(String content) {
