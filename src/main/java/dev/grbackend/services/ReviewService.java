@@ -5,6 +5,8 @@ import dev.grbackend.repositories.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ReviewService {
     @Autowired
@@ -12,5 +14,13 @@ public class ReviewService {
 
     public Review saveReview (Review review){
         return reviewRepository.save(review);
+    }
+
+    public List<Review> getGameReviews (String slug){
+        return reviewRepository.findByGame(slug);
+    }
+
+    public List<Review> getUserReviews (String userName){
+        return reviewRepository.findByUserName(userName);
     }
 }

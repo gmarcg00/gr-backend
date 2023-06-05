@@ -2,12 +2,15 @@ package dev.grbackend.services;
 
 import dev.grbackend.models.Game;
 
+import dev.grbackend.models.Reaction;
+import dev.grbackend.repositories.ReactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static dev.grbackend.utils.Helper.getRegexFromPrefix;
 
@@ -15,6 +18,9 @@ import static dev.grbackend.utils.Helper.getRegexFromPrefix;
 public class GameService {
     @Autowired
     GameMemory gameMemory;
+    @Autowired
+    ReactionRepository reactionRepository;
+
 
     public List<Game> getAllGames(){
         return gameMemory.getList();
@@ -44,6 +50,23 @@ public class GameService {
 
         if (result.size() >= 6) return result.subList(0,5);
         else return result;
+    }
+
+    public List<Game> getUserLikedGames(String userName){
+        List<Reaction> reactionList = reactionRepository.findByUserName(userName);
+        reactionList = reactionList.stream()
+                .filter(x -> x.getReactionType().equals("Like"))
+                .collect(Collectors.toList());
+        List <Game> likeGameList = new ArrayList<>();
+        for(Reaction reaction: reactionList){
+            for (Game game : gameMemory.getList()){
+                if(game.getSlug().equals(reaction.getSlug())){
+                    likeGameList.add(game);
+                    break;
+                }
+            }
+        }
+        return likeGameList;
     }
 
 

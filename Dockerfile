@@ -1,9 +1,4 @@
-FROM mysql:latest
-
-# Add a database
-ENV MYSQL_DATABASE gr-db
-
-# Add the content of the sql-scripts/ directory to your image
-# All scripts in docker-entrypoint-initdb.d/ are automatically
-# executed during container startup
-COPY ./gr-db/ /docker-entrypoint-initdb.d/
+FROM openjdk:17-jdk-alpine
+COPY "./target/grbackend-0.0.1-SNAPSHOT.jar" "app.jar"
+EXPOSE 8081
+ENTRYPOINT [ "java","-jar","app.jar" ]

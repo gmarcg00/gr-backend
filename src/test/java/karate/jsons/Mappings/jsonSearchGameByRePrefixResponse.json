@@ -1,0 +1,79 @@
+[
+  {
+    "id": 28,
+    "slug": "red-dead-redemption-2",
+    "name": "Red Dead Redemption 2",
+    "released": "2018-10-26T00:00:00.000+00:00",
+    "background_image": "https://media.rawg.io/media/games/511/5118aff5091cb3efec399c808f8c598f.jpg",
+    "playtime": 19,
+    "genres": [
+      {
+        "id": 4,
+        "name": "Action",
+        "slug": "action",
+        "games_count": "172721",
+        "image_background": "https://media.rawg.io/media/games/8d6/8d69eb6c32ed6acfd75f82d532144993.jpg"
+      },
+      {
+        "id": 3,
+        "name": "Adventure",
+        "slug": "adventure",
+        "games_count": "132450",
+        "image_background": "https://media.rawg.io/media/games/48c/48cb04ca483be865e3a83119c94e6097.jpg"
+      }
+    ],
+    "platforms": [
+      {
+        "released_at": "2018-10-26T00:00:00.000+00:00",
+        "platform": {
+          "id": 4,
+          "name": "PC",
+          "slug": "pc",
+          "year_start": null,
+          "image_background": "https://media.rawg.io/media/games/7cf/7cfc9220b401b7a300e409e539c9afd5.jpg",
+          "games_count": 512810
+        }
+      },
+      {
+        "released_at": "2018-10-26T00:00:00.000+00:00",
+        "platform": {
+          "id": 18,
+          "name": "PlayStation 4",
+          "slug": "playstation4",
+          "year_start": null,
+          "image_background": "https://media.rawg.io/media/games/960/960b601d9541cec776c5fa42a00bf6c4.jpg",
+          "games_count": 6632
+        }
+      },
+      {
+        "released_at": "2018-10-26T00:00:00.000+00:00",
+        "platform": {
+          "id": 1,
+          "name": "Xbox One",
+          "slug": "xbox-one",
+          "year_start": null,
+          "image_background": "https://media.rawg.io/media/games/b45/b45575f34285f2c4479c9a5f719d972e.jpg",
+          "games_count": 5510
+        }
+      }
+    ],
+    "stores": [
+      {
+        "id": 257732,
+        "storeElem": null
+      },
+      {
+        "id": 374316,
+        "storeElem": null
+      },
+      {
+        "id": 384218,
+        "storeElem": null
+      },
+      {
+        "id": 48782,
+        "storeElem": null
+      }
+    ]
+  }
+]

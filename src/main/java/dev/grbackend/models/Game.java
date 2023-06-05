@@ -26,6 +26,8 @@ public class Game {
     @JsonProperty
     private int playtime;
     @JsonProperty
+    private String website;
+    @JsonProperty
     private List<Genre> genres = new ArrayList<>();
     @JsonProperty
     private List<Platform> platforms = new ArrayList<>();
@@ -39,6 +41,9 @@ public class Game {
     }
     public String getName() {
         return name;
+    }
+    public String getWebsite() {
+        return website;
     }
     public Date getReleased() {
         return released;
