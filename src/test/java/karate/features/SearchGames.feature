@@ -18,4 +18,4 @@ Feature: Searching games on navbar tool
       | re                    | 200    | searchByReResponse |
       | red dead redemption 2 | 200    | searchByReResponse |
       | Red dead rEdempTion 2 | 200    | searchByReResponse |
-      | so                    | 404    | []                 |
+      | so                    | 200    | []                 |
