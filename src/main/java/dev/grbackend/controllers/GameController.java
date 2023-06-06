@@ -36,7 +36,7 @@ public class GameController {
     @GetMapping("/genre/{genre}/platform/{plat}/store/{store}")
     public ResponseEntity<List<Game>> getGamesByGenre (@PathVariable("genre") String genre, @PathVariable("plat") String platform, @PathVariable("store") String store){
         List<Game> listGames = gameService.findGames(genre,platform,store);
-        if(!listGames.isEmpty()){
+        if(listGames != null){
             return new ResponseEntity<>(listGames, HttpStatus.OK);
         }
         return new ResponseEntity<>(listGames,HttpStatus.NOT_FOUND);
@@ -51,5 +51,11 @@ public class GameController {
     public ResponseEntity<List<Game>> getUserLikedGames(@PathVariable("userName") String userName){
         List<Game> likeGameList = gameService.getUserLikedGames(userName);
         return new ResponseEntity<>(likeGameList, HttpStatus.OK);
+    }
+
+    @GetMapping("random")
+    public ResponseEntity<Game> getRandomGame(){
+        Game game = gameService.getRandomGame();
+        return new ResponseEntity<>(game, HttpStatus.OK);
     }
 }
