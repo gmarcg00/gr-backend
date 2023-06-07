@@ -21,6 +21,7 @@ public class GameService {
     @Autowired
     ReactionRepository reactionRepository;
 
+    Integer number;
 
     public List<Game> getAllGames(){
         return gameMemory.getList();
@@ -67,6 +68,11 @@ public class GameService {
             }
         }
         return likeGameList;
+    }
+
+    public Game getRandomGame(){
+        number = (int)(Math.random()*99+1);
+        return gameMemory.getList().get(number);
     }
 
 
