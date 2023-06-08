@@ -1,73 +1,58 @@
 package dev.grbackend.services;
 
+
 import dev.grbackend.models.User;
 import dev.grbackend.repositories.UserRepository;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
-
-import java.util.ArrayList;
-import java.util.List;
-
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.reflect.Whitebox;
+import org.springframework.dao.DataIntegrityViolationException;
 
 class UserServiceTest {
-    @Mock
-    UserRepository userRepository;
-    @InjectMocks
-    UserService userService;
-    @BeforeEach
-    public void setup(){
-        MockitoAnnotations.openMocks(this);
-    }
-    @Test
-    void getUsers() {
-        List<User> expectedUserList = new ArrayList<>();
-        User user1 = new User ("guillermo.1930@live.com","guille02","g1234");
-        User user2= new User ("alex23@gmail.com","alex1234","alex-root");
-        expectedUserList.add(user1);
-        expectedUserList.add(user2);
-
-        Mockito.when(userRepository.findAll()).thenReturn(expectedUserList);
-        List<User> actualUserList = userService.getUsers();
-
-        for(int i = 0 ; i<expectedUserList.size(); i++){
-            Assertions.assertEquals(expectedUserList.get(i).getUserName(),actualUserList.get(i).getUserName());
-            Assertions.assertEquals(expectedUserList.get(i).getEmail(),actualUserList.get(i).getEmail());
-            Assertions.assertEquals(expectedUserList.get(i).getPassword(),actualUserList.get(i).getPassword());
-        }
-    }
-    @Test
-    void getByUserName() {
-        User expectedUser = new User ("guillermo.1930@live.com","guille02","g1234");
-        Mockito.when(userRepository.findByUserName(expectedUser.getUserName())).thenReturn(new User ("guillermo.1930@live.com","guille02","g1234"));
-        User actualUser = userService.loginUser(expectedUser);
-        Assertions.assertEquals(expectedUser.getUserName(),actualUser.getUserName());
-        Assertions.assertEquals(expectedUser.getEmail(),actualUser.getEmail());
-        Assertions.assertEquals(expectedUser.getPassword(),actualUser.getPassword());
+    static UserService userService;
+    static UserRepository userRepository;
+    @BeforeAll
+    static void setup(){
+        userService = new UserService();
+        userRepository = PowerMockito.mock(UserRepository.class);
+        Whitebox.setInternalState(userService,"userRepository",userRepository);
     }
 
     @Test
-    void saveUser() {
-        User expectedUser = new User ("alex23@gmail.com","alex1234","alex-root");
-        Mockito.when(userRepository.save(expectedUser)).thenReturn(new User ("alex23@gmail.com","alex1234","alex-root"));
-        User actualUser = userService.saveUser(expectedUser);
-        Assertions.assertEquals(expectedUser.getUserName(),actualUser.getUserName());
-        Assertions.assertEquals(expectedUser.getEmail(),actualUser.getEmail());
-        Assertions.assertEquals(expectedUser.getPassword(),actualUser.getPassword());
+    public void loginCorrectUserTest(){
+        User user = new User("guille34","g1234");
+        Mockito.when(userRepository.findByUserName(user.getUserName()))
+                .thenReturn(new User(Long.parseLong("1"),"guille2345@gmail.com","guille34","g1234"));
+        User userResponse = userService.loginUser(user);
+        Assertions.assertEquals(user.getUserName(),userResponse.getUserName());
+        Assertions.assertEquals(user.getPassword(),userResponse.getPassword());
     }
-/*
+
     @Test
-    void deleteUser() {
-        User expectedUser = userService.getByUserName(new User ("user3@live.com","user3","user3-1234"));
-        Mockito.when(userService.deleteUser(expectedUser)).thenReturn(new User ("user3@live.com","user3","user3-1234"));
-        User actualUser = userService.deleteUser(expectedUser);
-        Assertions.assertEquals(expectedUser.getUserName(),actualUser.getUserName());
-        Assertions.assertEquals(expectedUser.getEmail(),actualUser.getEmail());
-        Assertions.assertEquals(expectedUser.getPassword(),actualUser.getPassword());
+    public void loginIncorrectUserTest(){
+        User user = new User("andrew23","and021");
+        Mockito.when(userRepository.findByUserName(user.getUserName()))
+                .thenReturn(null);
+        User userResponse = userService.loginUser(user);
+        Assertions.assertEquals(null,userResponse);
     }
- */
+    @Test
+    public void registerCorrectUserTest(){
+        User user = new User("guille2345@gmail.com","g23","g2023");
+        Mockito.when(userRepository.save(user))
+                .thenReturn(new User(Long.parseLong("1"),"guille2345@gmail.com","guille34","g1234"));
+        User userResponse = userService.saveUser(user);
+        Assertions.assertEquals(user.getEmail(),userResponse.getEmail());
+    }
+    @Test
+    public void registerInCorrectUserTest(){
+        User user = new User("guille2345@gmail.com","g23","g2023");
+        Mockito.when(userRepository.save(user))
+                .thenThrow(DataIntegrityViolationException.class);
+        User userResponse = userService.saveUser(user);
+        Assertions.assertEquals(null,userResponse);
+    }
 }
