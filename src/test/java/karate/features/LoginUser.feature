@@ -20,4 +20,4 @@ Feature: Login user
       | description         | request                  | status | response              |
       | correct credentials | singleUserRequest        | 200    | singleUserResponse    |
       | incorrect username  | wrongUserNameUserRequest | 401    | "Invalid credentials" |
-      | incorrect password  | wrongPasswordUserRequest  | 401   | "Invalid credentials" |
+      | incorrect password  | wrongPasswordUserRequest | 401    | "Invalid credentials" |

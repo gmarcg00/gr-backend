@@ -3,15 +3,19 @@ pipeline {
     tools {maven "maven"}
 
     stages{
+        stage('Clean') {
+            steps {
+                sh 'mvn clean'
+            }
+        }
         stage('Clean & Compile') {
             steps {
-                sh 'mvn clean compile'
+                sh 'mvn compile'
             }
         }
         stage('Unit Test') {
             steps {
-                sh 'mvn test -Dtest=UserControllerTest'
-                sh 'mvn test -Dtest=UserServiceTest'
+                sh 'mvn test'
             }
         }
         stage('SonarQube Analysis') {
