@@ -30,7 +30,7 @@ public class ReactionController {
         if(reaction != null){
             return new ResponseEntity<>(reaction, HttpStatus.OK);
         }else{
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(null,HttpStatus.NO_CONTENT);
         }
     }
 
@@ -40,7 +40,7 @@ public class ReactionController {
         if(reactionList != null){
             return new ResponseEntity<>(reactionList, HttpStatus.OK);
         }else{
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(null,HttpStatus.NO_CONTENT);
         }
     }
 

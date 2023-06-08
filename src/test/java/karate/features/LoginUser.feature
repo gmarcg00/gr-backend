@@ -4,11 +4,12 @@ Feature: Login user
     * url 'http://localhost:8081'
     * header Accept = 'application/json'
     * def singleUserRequest = read ('../jsons/Mappings/jsonSingleUserRequest.json')
-    * def nonExistentUserRequest = read ('../jsons/Mappings/jsonNonExistentUserRequest.json')
-    * def SingleUserResponse = read ('../jsons/Mappings/jsonSingleUserResponse.json')
+    * def wrongUserNameUserRequest = read ('../jsons/Mappings/jsonWrongUserNameUserRequest.json')
+    * def wrongPasswordUserRequest = read ('../jsons/Mappings/jsonWrongPasswordUserRequest.json')
+    * def singleUserResponse = read ('../jsons/Mappings/jsonSingleUserResponse.json')
 
 
-  Scenario Outline: Login user
+  Scenario Outline: Login user - <description>
     Given path '/user/login'
     And request <request>
     When method POST
@@ -16,6 +17,7 @@ Feature: Login user
     And match response == <response>
 
     Examples:
-      | request                | status | response                                |
-      | singleUserRequest      | 200    | SingleUserResponse                      |
-      | nonExistentUserRequest | 401    | "User not found or invalid credentials" |
+      | description         | request                  | status | response              |
+      | correct credentials | singleUserRequest        | 200    | singleUserResponse    |
+      | incorrect username  | wrongUserNameUserRequest | 401    | "Invalid credentials" |
+      | incorrect password  | wrongPasswordUserRequest  | 401   | "Invalid credentials" |

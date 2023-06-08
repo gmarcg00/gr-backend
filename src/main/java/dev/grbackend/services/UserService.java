@@ -20,7 +20,7 @@ public class UserService {
     public User loginUser(User user){
         User userObject = userRepository.findByUserName(user.getUserName());
         if(userObject != null) {
-            if (userObject.getPassword().equals(user.getPassword())) {
+            if(userObject.getPassword().equals(user.getPassword())) {
                 return userObject;
             }
         }

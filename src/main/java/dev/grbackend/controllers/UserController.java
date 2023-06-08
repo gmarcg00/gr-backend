@@ -23,10 +23,9 @@ public class UserController {
     public ResponseEntity<Object> loginUser(@RequestBody User user){
         User userObject = userService.loginUser(user);
         if(userObject != null){
-            return new ResponseEntity<>(userObject, HttpStatus.OK);
+            return new ResponseEntity<>(userObject,HttpStatus.OK);
         }
-        return new ResponseEntity<>("User not found or invalid credentials",HttpStatus.UNAUTHORIZED);
-
+        return new ResponseEntity<>("Invalid credentials",HttpStatus.UNAUTHORIZED);
     }
     @PostMapping("/register")
     public ResponseEntity<User> saveUser(@RequestBody User user) {
