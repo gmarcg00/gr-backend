@@ -31,4 +31,12 @@ public class UserController {
         }
         return new ResponseEntity<>("User name already used", HttpStatus.CONFLICT);
     }
+    @DeleteMapping()
+    public ResponseEntity<Object> deleteUser(@RequestBody User user){
+        User userObject = this.userService.deleteUser(user);
+        if(userObject != null){
+            return new ResponseEntity<>(userObject, HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+    }
 }

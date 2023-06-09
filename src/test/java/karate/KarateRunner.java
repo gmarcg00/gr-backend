@@ -10,5 +10,7 @@ public class KarateRunner {
     @Karate.Test
     Karate testRegisterUser() { return Karate.run("src/test/java/karate/features/RegisterUser.feature"); }
     @Karate.Test
+    Karate testDeleteUser() { return Karate.run("src/test/java/karate/features/DeleteUser.feature"); }
+    @Karate.Test
     Karate testSearchGames() { return Karate.run("src/test/java/karate/features/SearchGames.feature"); }
 }

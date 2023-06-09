@@ -61,4 +61,22 @@ class UserControllerTest {
         Assertions.assertEquals(HttpStatus.CONFLICT,responseEntity.getStatusCode());
     }
 
+    @Test
+    public void deleteCorrectUserTest(){
+        User user = new User("jorge@gmail.com","jorg98","j12");
+        Mockito.when(userService.deleteUser(user))
+                .thenReturn(new User(Long.parseLong("4"),"jorge@gmail.com","jorg98","j12"));
+        var responseEntity = userController.deleteUser(user);
+        Assertions.assertEquals(HttpStatus.CREATED,responseEntity.getStatusCode());
+    }
+
+    @Test
+    public void deleteIncorrectUserTest(){
+        User user = new User("jorge@gmail.com","jorg98","j12");
+        Mockito.when(userService.deleteUser(user))
+                .thenReturn(null);
+        var responseEntity = userController.deleteUser(user);
+        Assertions.assertEquals(HttpStatus.NOT_FOUND,responseEntity.getStatusCode());
+    }
+
 }

@@ -55,4 +55,20 @@ class UserServiceTest {
         User userResponse = userService.saveUser(user);
         Assertions.assertEquals(null,userResponse);
     }
+
+    @Test
+    public void deleteCorrectUserTest(){
+        User user = new User("guille2345@gmail.com","g23","g2023");
+        Mockito.when(userRepository.findByUserName(user.getUserName())).thenReturn(new User(Long.parseLong("1"),"guille2345@gmail.com","guille34","g1234"));
+        User userResponse = userService.deleteUser(user);
+        Assertions.assertEquals(user.getEmail(),userResponse.getEmail());
+    }
+
+    @Test
+    public void deleteIncorrectUserTest(){
+        User user = new User("guille2345@gmail.com","g23","g2023");
+        Mockito.when(userRepository.findByUserName(user.getUserName())).thenReturn(null);
+        User userResponse = userService.deleteUser(user);
+        Assertions.assertEquals(null,userResponse);
+    }
 }

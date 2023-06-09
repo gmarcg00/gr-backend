@@ -29,4 +29,13 @@ public class UserService {
         }
     }
 
+    public User deleteUser(User user){
+        User userObject = userRepository.findByUserName(user.getUserName());
+        if(userObject != null){
+            userRepository.deleteById(userObject.getId());
+            return userObject;
+        }
+        return null;
+    }
+
 }
