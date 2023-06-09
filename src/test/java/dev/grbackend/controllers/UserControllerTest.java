@@ -5,7 +5,6 @@ import dev.grbackend.models.User;
 import dev.grbackend.services.UserService;
 
 
-import lombok.var;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
