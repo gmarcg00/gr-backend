@@ -13,6 +13,11 @@ pipeline {
                 sh 'mvn compile'
             }
         }
+        stage('Install') {
+            steps {
+                sh 'mvn install'
+            }
+        }
         stage('Unit Test') {
             steps {
                 sh 'mvn test'
