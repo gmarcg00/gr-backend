@@ -17,8 +17,20 @@ public class User {
     public User() {
     }
 
+    public User (Long id, String email, String userName, String password){
+        this.id = id;
+        this.email = email;
+        this.userName = userName;
+        this.password = password;
+    }
+
     public User (String email, String userName, String password){
         this.email = email;
+        this.userName = userName;
+        this.password = password;
+    }
+
+    public User (String userName, String password){
         this.userName = userName;
         this.password = password;
     }
