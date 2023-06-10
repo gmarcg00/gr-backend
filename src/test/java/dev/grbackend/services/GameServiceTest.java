@@ -1,6 +1,7 @@
 package dev.grbackend.services;
 
 import dev.grbackend.models.Game;
+import dev.grbackend.models.Reaction;
 import dev.grbackend.repositories.ReactionRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -71,5 +72,20 @@ class GameServiceTest {
         Mockito.when(gameMemory.searchByPrefix("X.*")).thenReturn(gameList);
         response = gameService.searchByPrefix("x");
         Assertions.assertEquals(0,response.size());
+    }
+
+    @Test
+    void getUserLikedGames(){
+        List<Reaction> reactionList = new ArrayList<>();
+        List<Game> gameList = new ArrayList<>();
+        Game game = new Game("GTA V");
+        Reaction reaction = new Reaction("user1","GTA V","Like");
+        reactionList.add(reaction);
+        gameList.add(game);
+        Mockito.when(reactionRepository.findByUserName("user1")).thenReturn(reactionList);
+        Mockito.when((gameMemory.getList())).thenReturn(gameList);
+        var response = gameService.getUserLikedGames("user1");
+        Assertions.assertEquals(1,response.size());
+        Assertions.assertEquals("GTA V",response.get(0).getSlug());
     }
 }

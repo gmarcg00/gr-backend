@@ -58,6 +58,12 @@ public class Game {
     public List<Platform> getPlatforms() {return platforms;}
     public List<Store> getStores() {return stores;}
 
+    public Game(){}
+    @JsonIgnore
+    public Game (String slug){
+        this.slug = slug;
+    }
+
     @JsonIgnore
     public boolean containsGenre(String genre){
         for(Genre elem: this.genres){
