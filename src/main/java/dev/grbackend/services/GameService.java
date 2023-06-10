@@ -29,9 +29,7 @@ public class GameService {
 
     public Game getGame(String gameName){
         List<Game> list = gameMemory.findByName(gameName);
-
         if(list.size() == 1) return list.get(0);
-
         return null;
     }
 

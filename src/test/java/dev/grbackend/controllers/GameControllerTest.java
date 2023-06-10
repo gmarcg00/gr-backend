@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class GameControllerTest {
+class GameControllerTest {
     static GameController gameController;
     static GameService gameService;
 
@@ -26,7 +26,7 @@ public class GameControllerTest {
         Whitebox.setInternalState(gameController,"gameService",gameService);
     }
     @Test
-    public void getAllGamesTest(){
+    void getAllGamesTest(){
         List<Game> gameList = new ArrayList<>();
         Game game = new Game();
         gameList.add(game);
@@ -39,7 +39,7 @@ public class GameControllerTest {
     }
 
     @Test
-    public void getGameTest(){
+    void getGameTest(){
         Game game = new Game();
         Mockito.when(gameService.getGame("The Last Of Us II")).thenReturn(game);
         var response = gameController.getGame("The Last Of Us II");
@@ -50,7 +50,7 @@ public class GameControllerTest {
     }
 
     @Test
-    public void filterGamesTest(){
+    void filterGamesTest(){
         List<Game> gameList = new ArrayList<>();
         Game game = new Game();
         gameList.add(game);
@@ -66,7 +66,7 @@ public class GameControllerTest {
     }
 
     @Test
-    public void searchByPrefix(){
+    void searchByPrefix(){
         List<Game> gameList = new ArrayList<>();
         Game game = new Game();
         gameList.add(game);
@@ -82,7 +82,7 @@ public class GameControllerTest {
     }
 
     @Test
-    public void getUserLikedGamesTest(){
+    void getUserLikedGamesTest(){
         List<Game> gameList = new ArrayList<>();
         Game game = new Game();
         gameList.add(game);
@@ -98,7 +98,7 @@ public class GameControllerTest {
     }
 
     @Test
-    public void getRandonmGameTest(){
+    void getRandonmGameTest(){
         Game game = new Game();
         Mockito.when(gameService.getRandomGame()).thenReturn(game);
         var response = gameController.getRandomGame();
