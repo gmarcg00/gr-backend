@@ -29,4 +29,10 @@ public class ReviewController {
         if(result != null) return new ResponseEntity<>(result, HttpStatus.OK);
         else return new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
     }
+    @GetMapping("user/{userName}")
+    public ResponseEntity<List<Review>> getUserReviews(@PathVariable ("userName") String userName){
+        List<Review> result = reviewService.getUserReviews(userName);
+        if(result != null) return new ResponseEntity<>(result, HttpStatus.OK);
+        else return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
