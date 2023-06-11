@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface ReactionRepository extends CrudRepository<Reaction,Long> {
     public abstract List<Reaction> findByUserName(String userName);
-    public abstract List<Reaction> findBySlug(String userName);
+    public abstract List<Reaction> findBySlug(String slug);
 }

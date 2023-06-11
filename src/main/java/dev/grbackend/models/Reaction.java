@@ -15,6 +15,14 @@ public class Reaction {
     private String reactionType;
 
     public Reaction(){}
+
+    @JsonIgnore
+    public Reaction(Long id, String userName, String slug, String reactionType){
+        this.id = id;
+        this.userName = userName;
+        this.slug = slug;
+        this.reactionType = reactionType;
+    }
     @JsonIgnore
     public Reaction(String userName, String slug, String reactionType){
         this.userName = userName;
