@@ -18,11 +18,7 @@ public class ReactionController {
     @PostMapping()
     public ResponseEntity<Reaction> saveReaction (@RequestBody Reaction reaction){
        Reaction newReaction =  reactionService.saveReaction(reaction);
-        if(newReaction != null){
-            return new ResponseEntity<>(newReaction, HttpStatus.CREATED);
-        }else{
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
-        }
+        return new ResponseEntity<>(newReaction, HttpStatus.CREATED);
     }
     @GetMapping("/user/{userName}/game/{slug}")
     public ResponseEntity<Reaction> getReaction (@PathVariable("userName") String userName, @PathVariable("slug") String slug){
@@ -37,7 +33,7 @@ public class ReactionController {
     @GetMapping("like/game/{slug}")
     public ResponseEntity<List<Reaction>> getGameLikeReactions (@PathVariable("slug") String slug){
         List<Reaction> reactionList = reactionService.getGameLikeReactions(slug);
-        if(reactionList != null){
+        if(!reactionList.isEmpty()){
             return new ResponseEntity<>(reactionList, HttpStatus.OK);
         }else{
             return new ResponseEntity<>(null,HttpStatus.NO_CONTENT);
