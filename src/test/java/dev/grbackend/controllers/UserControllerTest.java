@@ -26,7 +26,7 @@ class UserControllerTest {
     }
 
     @Test
-    public void loginCorrectUserTest(){
+    void loginCorrectUserTest(){
         User user = new User("guille34","g1234");
         Mockito.when(userService.loginUser(user))
                 .thenReturn(new User(Long.parseLong("1"),"guille2345@gmail.com","guille34","g1234"));
@@ -35,7 +35,7 @@ class UserControllerTest {
     }
 
     @Test
-    public void loginIncorrectUserTest(){
+    void loginIncorrectUserTest(){
         User user = new User("jorg98","j12");
         Mockito.when(userService.loginUser(user))
                 .thenReturn(null);
@@ -44,7 +44,7 @@ class UserControllerTest {
     }
 
     @Test
-    public void registerCorrectUserTest(){
+    void registerCorrectUserTest(){
         User user = new User("jorge@gmail.com","jorg98","j12");
         Mockito.when(userService.saveUser(user))
                 .thenReturn(new User(Long.parseLong("2"),"jorge@gmail.com","jorg98","j12"));
@@ -53,7 +53,7 @@ class UserControllerTest {
     }
 
     @Test
-    public void registerIncorrectUserTest(){
+    void registerIncorrectUserTest(){
         User user = new User("jorge@gmail.com","jorg98","j12");
         Mockito.when(userService.saveUser(user))
                 .thenReturn(null);
@@ -62,7 +62,7 @@ class UserControllerTest {
     }
 
     @Test
-    public void deleteCorrectUserTest(){
+    void deleteCorrectUserTest(){
         User user = new User("jorge@gmail.com","jorg98","j12");
         Mockito.when(userService.deleteUser(user))
                 .thenReturn(new User(Long.parseLong("4"),"jorge@gmail.com","jorg98","j12"));
@@ -71,7 +71,7 @@ class UserControllerTest {
     }
 
     @Test
-    public void deleteIncorrectUserTest(){
+    void deleteIncorrectUserTest(){
         User user = new User("jorge@gmail.com","jorg98","j12");
         Mockito.when(userService.deleteUser(user))
                 .thenReturn(null);
