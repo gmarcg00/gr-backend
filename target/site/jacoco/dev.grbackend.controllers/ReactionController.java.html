@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ReactionController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gr-backend</a> &gt; <a href="index.source.html" class="el_package">dev.grbackend.controllers</a> &gt; <span class="el_source">ReactionController.java</span></div><h1>ReactionController.java</h1><pre class="source lang-java linenums">package dev.grbackend.controllers;
+
+import dev.grbackend.models.Reaction;
+import dev.grbackend.services.ReactionService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping(&quot;/reaction&quot;)
+@CrossOrigin(origins = &quot;http://localhost:3000&quot;)
+<span class="fc" id="L15">public class ReactionController {</span>
+    @Autowired
+    private ReactionService reactionService;
+    @PostMapping()
+    public ResponseEntity&lt;Reaction&gt; saveReaction (@RequestBody Reaction reaction){
+<span class="fc" id="L20">       Reaction newReaction =  reactionService.saveReaction(reaction);</span>
+<span class="fc" id="L21">        return new ResponseEntity&lt;&gt;(newReaction, HttpStatus.CREATED);</span>
+    }
+    @GetMapping(&quot;/user/{userName}/game/{slug}&quot;)
+    public ResponseEntity&lt;Reaction&gt; getReaction (@PathVariable(&quot;userName&quot;) String userName, @PathVariable(&quot;slug&quot;) String slug){
+<span class="fc" id="L25">        Reaction reaction = reactionService.getReaction(userName,slug);</span>
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        if(reaction != null){</span>
+<span class="fc" id="L27">            return new ResponseEntity&lt;&gt;(reaction, HttpStatus.OK);</span>
+        }else{
+<span class="fc" id="L29">            return new ResponseEntity&lt;&gt;(null,HttpStatus.NO_CONTENT);</span>
+        }
+    }
+
+    @GetMapping(&quot;like/game/{slug}&quot;)
+    public ResponseEntity&lt;List&lt;Reaction&gt;&gt; getGameLikeReactions (@PathVariable(&quot;slug&quot;) String slug){
+<span class="fc" id="L35">        List&lt;Reaction&gt; reactionList = reactionService.getGameLikeReactions(slug);</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">        if(!reactionList.isEmpty()){</span>
+<span class="fc" id="L37">            return new ResponseEntity&lt;&gt;(reactionList, HttpStatus.OK);</span>
+        }else{
+<span class="fc" id="L39">            return new ResponseEntity&lt;&gt;(null,HttpStatus.NO_CONTENT);</span>
+        }
+    }
+
+    @DeleteMapping()
+    public ResponseEntity&lt;HttpStatus&gt; deleteReaction (@RequestBody Reaction reaction){
+<span class="fc bfc" id="L45" title="All 2 branches covered.">        if(reactionService.deleteReaction(reaction)) return new ResponseEntity&lt;&gt;(HttpStatus.CREATED);</span>
+<span class="fc" id="L46">        else return new ResponseEntity&lt;&gt;(HttpStatus.NOT_FOUND);</span>
+
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GameController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gr-backend</a> &gt; <a href="index.source.html" class="el_package">dev.grbackend.controllers</a> &gt; <span class="el_source">GameController.java</span></div><h1>GameController.java</h1><pre class="source lang-java linenums">package dev.grbackend.controllers;
+
+import dev.grbackend.models.Game;
+import dev.grbackend.services.GameService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping(&quot;/game&quot;)
+@CrossOrigin(origins = &quot;http://localhost:3000&quot;)
+<span class="fc" id="L15">public class GameController {</span>
+    @Autowired
+    private GameService gameService;
+    @GetMapping
+    public ResponseEntity&lt;List&lt;Game&gt;&gt; getAllGames (){
+<span class="fc" id="L20">        List&lt;Game&gt; listGames = gameService.getAllGames();</span>
+<span class="fc bfc" id="L21" title="All 2 branches covered.">        if(listGames != null){</span>
+<span class="fc" id="L22">            return new ResponseEntity&lt;&gt;(listGames, HttpStatus.OK);</span>
+        }
+<span class="fc" id="L24">        return new ResponseEntity&lt;&gt;(HttpStatus.NOT_FOUND);</span>
+    }
+
+    @GetMapping(&quot;{slug}&quot;)
+    public ResponseEntity&lt;Game&gt; getGame (@PathVariable(&quot;slug&quot;) String gameName){
+<span class="fc" id="L29">        Game game = gameService.getGame(gameName);</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        if(game != null){</span>
+<span class="fc" id="L31">            return new ResponseEntity&lt;&gt;(game, HttpStatus.OK);</span>
+        }
+<span class="fc" id="L33">        return new ResponseEntity&lt;&gt;(HttpStatus.NOT_FOUND);</span>
+    }
+
+    @GetMapping(&quot;/genre/{genre}/platform/{plat}/store/{store}&quot;)
+    public ResponseEntity&lt;List&lt;Game&gt;&gt; filterGames(@PathVariable(&quot;genre&quot;) String genre, @PathVariable(&quot;plat&quot;) String platform, @PathVariable(&quot;store&quot;) String store){
+<span class="fc" id="L38">        List&lt;Game&gt; listGames = gameService.findGames(genre,platform,store);</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        if(!listGames.isEmpty()){</span>
+<span class="fc" id="L40">            return new ResponseEntity&lt;&gt;(listGames, HttpStatus.OK);</span>
+        }
+<span class="fc" id="L42">        return new ResponseEntity&lt;&gt;(HttpStatus.NO_CONTENT);</span>
+    }
+    @GetMapping(&quot;/search/{prefix}&quot;)
+    public ResponseEntity&lt;List&lt;Game&gt;&gt; searchByPrefix (@PathVariable(&quot;prefix&quot;) String prefix) {
+<span class="fc" id="L46">        List&lt;Game&gt; listGames = gameService.searchByPrefix(prefix);</span>
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        if(!listGames.isEmpty()){</span>
+<span class="fc" id="L48">            return new ResponseEntity&lt;&gt;(listGames, HttpStatus.OK);</span>
+        }
+<span class="fc" id="L50">        return new ResponseEntity&lt;&gt;(HttpStatus.NO_CONTENT);</span>
+    }
+
+    @GetMapping(&quot;like/user/{userName}&quot;)
+    public ResponseEntity&lt;List&lt;Game&gt;&gt; getUserLikedGames(@PathVariable(&quot;userName&quot;) String userName){
+<span class="fc" id="L55">        List&lt;Game&gt; likeGameList = gameService.getUserLikedGames(userName);</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">        if(!likeGameList.isEmpty()){</span>
+<span class="fc" id="L57">            return new ResponseEntity&lt;&gt;(likeGameList, HttpStatus.OK);</span>
+        }
+<span class="fc" id="L59">        return new ResponseEntity&lt;&gt;(HttpStatus.NO_CONTENT);</span>
+    }
+
+    @GetMapping(&quot;random&quot;)
+    public ResponseEntity&lt;Game&gt; getRandomGame(){
+<span class="fc" id="L64">        Game game = gameService.getRandomGame();</span>
+<span class="fc" id="L65">        return new ResponseEntity&lt;&gt;(game, HttpStatus.OK);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
