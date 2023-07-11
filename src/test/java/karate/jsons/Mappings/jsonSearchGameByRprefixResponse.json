@@ -12,15 +12,15 @@
         "id": 4,
         "name": "Action",
         "slug": "action",
-        "games_count": "172786",
-        "image_background": "https://media.rawg.io/media/games/120/1201a40e4364557b124392ee50317b99.jpg"
+        "games_count": "173233",
+        "image_background": "https://media.rawg.io/media/games/4be/4be6a6ad0364751a96229c56bf69be59.jpg"
       },
       {
         "id": 3,
         "name": "Adventure",
         "slug": "adventure",
-        "games_count": "132549",
-        "image_background": "https://media.rawg.io/media/games/5c0/5c0dd63002cb23f804aab327d40ef119.jpg"
+        "games_count": "132938",
+        "image_background": "https://media.rawg.io/media/games/26d/26d4437715bee60138dab4a7c8c59c92.jpg"
       }
     ],
     "platforms": [
@@ -31,8 +31,8 @@
           "name": "PC",
           "slug": "pc",
           "year_start": null,
-          "image_background": "https://media.rawg.io/media/games/7cf/7cfc9220b401b7a300e409e539c9afd5.jpg",
-          "games_count": 512981
+          "image_background": "https://media.rawg.io/media/games/8cc/8cce7c0e99dcc43d66c8efd42f9d03e3.jpg",
+          "games_count": 513929
         }
       },
       {
@@ -42,8 +42,8 @@
           "name": "PlayStation 4",
           "slug": "playstation4",
           "year_start": null,
-          "image_background": "https://media.rawg.io/media/games/960/960b601d9541cec776c5fa42a00bf6c4.jpg",
-          "games_count": 6631
+          "image_background": "https://media.rawg.io/media/games/8a0/8a02f84a5916ede2f923b88d5f8217ba.jpg",
+          "games_count": 6660
         }
       },
       {
@@ -53,8 +53,8 @@
           "name": "Xbox One",
           "slug": "xbox-one",
           "year_start": null,
-          "image_background": "https://media.rawg.io/media/games/16b/16b1b7b36e2042d1128d5a3e852b3b2f.jpg",
-          "games_count": 5510
+          "image_background": "https://media.rawg.io/media/games/157/15742f2f67eacff546738e1ab5c19d20.jpg",
+          "games_count": 5533
         }
       }
     ],
@@ -90,22 +90,22 @@
         "id": 15,
         "name": "Sports",
         "slug": "sports",
-        "games_count": "20576",
-        "image_background": "https://media.rawg.io/media/games/b22/b227810b1a1bcbe9cf3dda22534c686e.jpg"
+        "games_count": "20645",
+        "image_background": "https://media.rawg.io/media/games/b59/b59560a7277b16b53e4786b4abe45baa.jpg"
       },
       {
         "id": 1,
         "name": "Racing",
         "slug": "racing",
-        "games_count": "23995",
+        "games_count": "24045",
         "image_background": "https://media.rawg.io/media/games/082/082365507ff04d456c700157072d35db.jpg"
       },
       {
         "id": 51,
         "name": "Indie",
         "slug": "indie",
-        "games_count": "53089",
-        "image_background": "https://media.rawg.io/media/games/0be/0bea0a08a4d954337305391b778a7f37.jpg"
+        "games_count": "53706",
+        "image_background": "https://media.rawg.io/media/games/d5a/d5a24f9f71315427fa6e966fdd98dfa6.jpg"
       }
     ],
     "platforms": [
@@ -116,8 +116,8 @@
           "name": "Nintendo Switch",
           "slug": "nintendo-switch",
           "year_start": null,
-          "image_background": "https://media.rawg.io/media/games/157/15742f2f67eacff546738e1ab5c19d20.jpg",
-          "games_count": 5234
+          "image_background": "https://media.rawg.io/media/games/c4b/c4b0cab189e73432de3a250d8cf1c84e.jpg",
+          "games_count": 5271
         }
       },
       {
@@ -127,8 +127,8 @@
           "name": "Linux",
           "slug": "linux",
           "year_start": null,
-          "image_background": "https://media.rawg.io/media/games/e04/e04963f3ac4c4fa83a1dc0b9231e50db.jpg",
-          "games_count": 75152
+          "image_background": "https://media.rawg.io/media/games/198/1988a337305e008b41d7f536ce9b73f6.jpg",
+          "games_count": 75239
         }
       },
       {
@@ -138,8 +138,8 @@
           "name": "macOS",
           "slug": "macos",
           "year_start": null,
-          "image_background": "https://media.rawg.io/media/games/562/562553814dd54e001a541e4ee83a591c.jpg",
-          "games_count": 101542
+          "image_background": "https://media.rawg.io/media/games/b7b/b7b8381707152afc7d91f5d95de70e39.jpg",
+          "games_count": 101647
         }
       },
       {
@@ -149,8 +149,8 @@
           "name": "Xbox One",
           "slug": "xbox-one",
           "year_start": null,
-          "image_background": "https://media.rawg.io/media/games/16b/16b1b7b36e2042d1128d5a3e852b3b2f.jpg",
-          "games_count": 5510
+          "image_background": "https://media.rawg.io/media/games/157/15742f2f67eacff546738e1ab5c19d20.jpg",
+          "games_count": 5533
         }
       },
       {
@@ -160,8 +160,8 @@
           "name": "PC",
           "slug": "pc",
           "year_start": null,
-          "image_background": "https://media.rawg.io/media/games/7cf/7cfc9220b401b7a300e409e539c9afd5.jpg",
-          "games_count": 512981
+          "image_background": "https://media.rawg.io/media/games/8cc/8cce7c0e99dcc43d66c8efd42f9d03e3.jpg",
+          "games_count": 513929
         }
       },
       {
@@ -171,8 +171,8 @@
           "name": "PlayStation 4",
           "slug": "playstation4",
           "year_start": null,
-          "image_background": "https://media.rawg.io/media/games/960/960b601d9541cec776c5fa42a00bf6c4.jpg",
-          "games_count": 6631
+          "image_background": "https://media.rawg.io/media/games/8a0/8a02f84a5916ede2f923b88d5f8217ba.jpg",
+          "games_count": 6660
         }
       }
     ],
@@ -212,8 +212,8 @@
         "id": 4,
         "name": "Action",
         "slug": "action",
-        "games_count": "172786",
-        "image_background": "https://media.rawg.io/media/games/120/1201a40e4364557b124392ee50317b99.jpg"
+        "games_count": "173233",
+        "image_background": "https://media.rawg.io/media/games/4be/4be6a6ad0364751a96229c56bf69be59.jpg"
       }
     ],
     "platforms": [
@@ -224,8 +224,8 @@
           "name": "Xbox One",
           "slug": "xbox-one",
           "year_start": null,
-          "image_background": "https://media.rawg.io/media/games/16b/16b1b7b36e2042d1128d5a3e852b3b2f.jpg",
-          "games_count": 5510
+          "image_background": "https://media.rawg.io/media/games/157/15742f2f67eacff546738e1ab5c19d20.jpg",
+          "games_count": 5533
         }
       },
       {
@@ -235,8 +235,8 @@
           "name": "PC",
           "slug": "pc",
           "year_start": null,
-          "image_background": "https://media.rawg.io/media/games/7cf/7cfc9220b401b7a300e409e539c9afd5.jpg",
-          "games_count": 512981
+          "image_background": "https://media.rawg.io/media/games/8cc/8cce7c0e99dcc43d66c8efd42f9d03e3.jpg",
+          "games_count": 513929
         }
       },
       {
@@ -246,8 +246,8 @@
           "name": "macOS",
           "slug": "macos",
           "year_start": null,
-          "image_background": "https://media.rawg.io/media/games/562/562553814dd54e001a541e4ee83a591c.jpg",
-          "games_count": 101542
+          "image_background": "https://media.rawg.io/media/games/b7b/b7b8381707152afc7d91f5d95de70e39.jpg",
+          "games_count": 101647
         }
       },
       {
@@ -257,8 +257,8 @@
           "name": "PlayStation 4",
           "slug": "playstation4",
           "year_start": null,
-          "image_background": "https://media.rawg.io/media/games/960/960b601d9541cec776c5fa42a00bf6c4.jpg",
-          "games_count": 6631
+          "image_background": "https://media.rawg.io/media/games/8a0/8a02f84a5916ede2f923b88d5f8217ba.jpg",
+          "games_count": 6660
         }
       }
     ],

@@ -19,6 +19,7 @@ public class ReviewController {
     @PostMapping()
     public ResponseEntity<Review> saveReview(@RequestBody Review review){
          Review result = reviewService.saveReview(review);
+         System.out.println("Demo modification");
          if(result != null) return new ResponseEntity<>(result, HttpStatus.CREATED);
          else return new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
     }
