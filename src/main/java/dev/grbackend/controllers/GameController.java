@@ -18,6 +18,7 @@ public class GameController {
     @GetMapping
     public ResponseEntity<List<Game>> getAllGames (){
         List<Game> listGames = gameService.getAllGames();
+        System.out.println("demo variation");
         if(listGames != null){
             return new ResponseEntity<>(listGames, HttpStatus.OK);
         }
