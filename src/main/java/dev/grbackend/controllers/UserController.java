@@ -25,6 +25,7 @@ public class UserController {
     }
     @PostMapping("/register")
     public ResponseEntity<Object> saveUser(@RequestBody User user) {
+        System.out.println("commit for tfg demo");
         User userObject = this.userService.saveUser(user);
         if(userObject != null){
             return new ResponseEntity<>(userObject, HttpStatus.CREATED);
