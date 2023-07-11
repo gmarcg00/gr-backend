@@ -34,6 +34,7 @@ public class GameService {
     }
 
     public List<Game> findGames(String genre, String platform, String store){
+        System.out.print("modificacion demo");
         GameMemory resultFilter = new GameMemory();
         resultFilter.setList(gameMemory.getList());
 
