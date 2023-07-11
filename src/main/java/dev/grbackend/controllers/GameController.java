@@ -27,6 +27,7 @@ public class GameController {
     @GetMapping("{slug}")
     public ResponseEntity<Game> getGame (@PathVariable("slug") String gameName){
         Game game = gameService.getGame(gameName);
+        System.out.println("commit for demo");
         if(game != null){
             return new ResponseEntity<>(game, HttpStatus.OK);
         }
