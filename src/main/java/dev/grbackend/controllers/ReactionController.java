@@ -32,6 +32,7 @@ public class ReactionController {
 
     @GetMapping("like/game/{slug}")
     public ResponseEntity<List<Reaction>> getGameLikeReactions (@PathVariable("slug") String slug){
+        System.out.println("commit for demo");
         List<Reaction> reactionList = reactionService.getGameLikeReactions(slug);
         if(!reactionList.isEmpty()){
             return new ResponseEntity<>(reactionList, HttpStatus.OK);
